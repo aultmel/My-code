@@ -3,44 +3,52 @@ import java.util.Scanner;
 public class OrdinalNumbers {
 	public static void main(String[] args) {
 		Scanner scnr = new Scanner(System.in);
-		System.out.print("Enter a nonnegative integer: ");
-		int userInput = scnr.nextInt();
-		System.out.println(toOrdinal(userInput));
+		System.out.print("Enter lower limit: ");
+		int lowerLimit = scnr.nextInt();
+		System.out.print("Enter upper limit: ");
+		int upperLimit = scnr.nextInt();
+		System.out.println("");
+		for (int i = lowerLimit; i <= upperLimit; i++) {
+			System.out.println(toOrdinal(i));
+		}
 	}
 
 	public static String toOrdinal(int userNum) {
-		userNum = (String)userNum;
-		char lastNum = userNum.charAt(userNum.length - 1);
-		char penultNum = userNum.charAt(userNum.length - 2);
-		String ordinalNum;
-		if (userNum.length == 1) {
-			if (lastNum == 1) {
-				ordinalNum = userNum + "st";
-			}
-			else if (lastNum == 2) {
-				ordinalNum = userNum + "nd";
-			}
-			else if (lastNum == 3) {
-				ordinalNum = userNum + "rd";
-			}	
-		}
-		else if ((int)userNum < 0) {
+		String userNumStr = Integer.toString(userNum);
+		char lastNum = userNumStr.charAt(userNumStr.length() - 1);
+		String ordinalNum = "";
+		if (userNum < 0) {
 			ordinalNum = "invalid";
 		}
+		else if (userNumStr.length() == 1) {
+			if (lastNum == '1') {
+				ordinalNum = userNumStr + "st";
+			}
+			else if (lastNum == '2') {
+				ordinalNum = userNumStr + "nd";
+			}
+			else if (lastNum == '3') {
+				ordinalNum = userNumStr + "rd";
+			}	
+			else {
+				ordinalNum = userNumStr + "th";
+			}
+		}
 		else {
-			if (lastNum == 1 && penultNum != 1) {
-				ordinalNum = userNum + "st";
+			char penultNum = userNumStr.charAt(userNumStr.length() - 2);
+			if (lastNum == '1' && penultNum != '1') {
+				ordinalNum = userNumStr + "st";
 			}
-			else if (lastNum == 2 && penultNum != 1) {
-				ordinalNum = userNum + "nd";
+			else if (lastNum == '2' && penultNum != '1') {
+				ordinalNum = userNumStr + "nd";
 			}
-			else if (lastNum == 3 && penultNum != 1) {
-				ordinalNum = userNum + "rd";
+			else if (lastNum == '3' && penultNum != '1') {
+				ordinalNum = userNumStr + "rd";
 			}
 			else {
-				ordinalNum = userNum + "th";
+				ordinalNum = userNumStr + "th";
 			}
-			return ordinalNum;
 		}
-
+		return ordinalNum;
 	}
+}

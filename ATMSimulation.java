@@ -18,7 +18,7 @@ public class ATMSimulation {
 		final int SENTINEL = 4;
 
 		// This variable stores the amount of money in the account
-		double balance = 20.00;	// a not-very-realistic college student amount
+		double balance = 9123082.76;	// a not-very-realistic college student amount
 
 		// This variable stores the max allowable one-time withdrawal
 		double limit = 1000;
